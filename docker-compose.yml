@@ -1,0 +1,64 @@
+version: '3'
+
+services:
+  php-ngx:
+    build:
+      context: .
+      dockerfile: php-ngx.dockerfile
+    ports:
+      - "9801:9801"
+    volumes:
+      - ./deploy:/deploy
+      - ./:/app
+
+  php-cli:
+    build:
+      context: .
+      dockerfile: php-cli.dockerfile
+    ports:
+      - "9802:9802"
+    volumes:
+      - ./:/app
+
+  php-fpm:
+    build:
+      context: .
+      dockerfile: php-fpm.dockerfile
+    ports:
+      - "9803:9803"
+    volumes:
+      - ./deploy:/deploy
+      - ./:/app
+
+  swoole:
+    build:
+      context: .
+      dockerfile: php-swoole.dockerfile
+    ports:
+      - "9804:9804"
+    volumes:
+      - ./deploy:/deploy
+      - ./:/app
+
+  frankenphp:
+    build:
+      context: .
+      dockerfile: frankenphp.dockerfile
+    ports:
+      - "9805:9805"
+    volumes:
+      - ./deploy:/deploy
+      - ./:/app
+
+  roadrunner:
+    build:
+      context: .
+      dockerfile: roadrunner.dockerfile
+    ports:
+      - "9806:9806"
+    volumes:
+      - ./deploy:/deploy
+      - ./:/app
+
+volumes:
+  deploy:
