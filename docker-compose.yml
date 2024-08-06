@@ -9,7 +9,6 @@ services:
       - "9801:9801"
     volumes:
       - ./deploy:/deploy
-      - ./:/app
 
   php-cli:
     build:
@@ -28,7 +27,6 @@ services:
       - "9803:9803"
     volumes:
       - ./deploy:/deploy
-      - ./:/app
 
   swoole:
     build:
@@ -40,22 +38,33 @@ services:
       - ./deploy:/deploy
       - ./:/app
 
-  frankenphp:
+  frankenphp-worker:
     build:
       context: .
-      dockerfile: frankenphp.dockerfile
+      dockerfile: frankenphp-worker.dockerfile
     ports:
       - "9805:9805"
     volumes:
       - ./deploy:/deploy
       - ./:/app
 
+  frankenphp-cgi:
+    build:
+      context: .
+      dockerfile: frankenphp-cgi.dockerfile
+    ports:
+      - "9806:80"
+    volumes:
+      - ./deploy:/deploy
+    environment:
+      SERVER_NAME: ":80"
+
   roadrunner:
     build:
       context: .
       dockerfile: roadrunner.dockerfile
     ports:
-      - "9806:9806"
+      - "9807:9807"
     volumes:
       - ./deploy:/deploy
       - ./:/app

@@ -4,4 +4,4 @@ RUN docker-php-ext-install pcntl
 
 WORKDIR /app/laravel-example
 
-ENTRYPOINT ["sh", "/app/frankenphp-entrypoint.sh"]
+ENTRYPOINT ["sh", "/app/frankenphp-worker-entrypoint.sh"]
