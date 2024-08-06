@@ -16,8 +16,6 @@ services:
       dockerfile: php-cli.dockerfile
     ports:
       - "9802:9802"
-    volumes:
-      - ./:/app
 
   php-fpm:
     build:
@@ -36,7 +34,6 @@ services:
       - "9804:9804"
     volumes:
       - ./deploy:/deploy
-      - ./:/app
 
   frankenphp-worker:
     build:
@@ -44,9 +41,6 @@ services:
       dockerfile: frankenphp-worker.dockerfile
     ports:
       - "9805:9805"
-    volumes:
-      - ./deploy:/deploy
-      - ./:/app
 
   frankenphp-cgi:
     build:
@@ -54,8 +48,6 @@ services:
       dockerfile: frankenphp-cgi.dockerfile
     ports:
       - "9806:80"
-    volumes:
-      - ./deploy:/deploy
     environment:
       SERVER_NAME: ":80"
 
@@ -67,7 +59,6 @@ services:
       - "9807:9807"
     volumes:
       - ./deploy:/deploy
-      - ./:/app
 
 volumes:
   deploy:
