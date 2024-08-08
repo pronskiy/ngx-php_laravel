@@ -1,0 +1,45 @@
+{
+    "listeners": {
+        "*:8080": {
+            "pass": "routes/laravel",
+            "forwarded": {
+                "client_ip": "X-Forwarded-For",
+                "recursive": true,
+                "source": ["0.0.0.0/0"]
+            }
+        }
+    },
+
+    "routes": {
+        "laravel": [
+            {
+                "match": {
+                    "uri": "!/index.php"
+                },
+                "action": {
+                    "share": "/var/www/app/public$uri",
+                    "fallback": {
+                        "pass": "applications/laravel"
+                    }
+                }
+            }
+        ]
+    },
+
+    "applications": {
+        "laravel": {
+            "type": "php",
+            "root": "/var/www/app/public/",
+            "script": "index.php",
+            "processes": 64,
+            "limits": {
+                "requests": 50000,
+                "timeout": 30
+            }
+        }
+    },
+
+    "access_log": {
+        "path": "/dev/stdout"
+    }
+}
