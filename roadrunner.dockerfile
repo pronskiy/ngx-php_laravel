@@ -8,4 +8,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/local/bin/composer
 
 WORKDIR /app/laravel-example
 
+COPY . /app
+RUN chown -R www-data:www-data /app
+
 ENTRYPOINT ["sh", "/app/roadrunner-entrypoint.sh"]
