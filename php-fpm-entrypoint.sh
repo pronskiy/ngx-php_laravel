@@ -7,9 +7,9 @@
    chmod 755 /var/run
 
    # Start PHP-FPM
-   php-fpm --fpm-config /deploy/conf/php-fpm.conf
+   php-fpm --fpm-config /app/deploy/conf/php-fpm.conf -c /app/deploy/conf/php.ini
 
    # Start Nginx
-   nginx -c /deploy/nginx-fpm.conf
+   nginx -c /app/deploy/nginx-fpm.conf
    
    tail -f /dev/null

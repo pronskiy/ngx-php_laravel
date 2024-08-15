@@ -36,6 +36,8 @@ COPY . /app
 
 RUN chown -R www-data:www-data /app
 
+RUN chown -R www-data:www-data /app
+
 EXPOSE 9801
 
-CMD /nginx/sbin/nginx -c /deploy/nginx_default.conf 
+CMD /nginx/sbin/nginx -c /app/deploy/nginx_default.conf 

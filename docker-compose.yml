@@ -7,8 +7,6 @@ services:
       dockerfile: php-ngx.dockerfile
     ports:
       - "9801:9801"
-    volumes:
-      - ./deploy:/deploy
 
   php-cli:
     build:
@@ -23,8 +21,6 @@ services:
       dockerfile: php-fpm.dockerfile
     ports:
       - "9803:9803"
-    volumes:
-      - ./deploy:/deploy
 
   swoole:
     build:
@@ -32,8 +28,6 @@ services:
       dockerfile: php-swoole.dockerfile
     ports:
       - "9804:9804"
-    volumes:
-      - ./deploy:/deploy
 
   frankenphp-worker:
     build:
@@ -57,8 +51,3 @@ services:
       dockerfile: roadrunner.dockerfile
     ports:
       - "9807:9807"
-    volumes:
-      - ./deploy:/deploy
-
-volumes:
-  deploy:
