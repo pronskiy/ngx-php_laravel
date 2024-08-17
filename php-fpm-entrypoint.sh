@@ -1,5 +1,4 @@
 #!/bin/sh
-   set -e
 
    # Ensure the socket directory has correct permissions
    mkdir -p /var/run
@@ -11,5 +10,5 @@
 
    # Start Nginx
    nginx -c /app/deploy/nginx-fpm.conf
-   
+
    tail -f /dev/null
