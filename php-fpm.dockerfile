@@ -6,6 +6,7 @@ WORKDIR /app/laravel-example
 
 COPY . /app
 RUN chown -R www-data:www-data /app
+RUN yes| php artisan migrate
 RUN php artisan optimize:clear
 RUN php artisan optimize
 
